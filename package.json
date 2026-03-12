@@ -1,0 +1,15 @@
+{
+  "name": "wallabag-cli",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "wallabag": "./src/main.ts"
+  },
+  "dependencies": {
+    "turndown": "^7"
+  },
+  "devDependencies": {
+    "bun-types": "^1",
+    "@types/turndown": "^5"
+  }
+}
