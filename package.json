@@ -6,6 +6,7 @@
     "wallabag": "./src/main.ts"
   },
   "scripts": {
+    "typecheck": "tsc --noEmit",
     "build": "bun build --compile src/main.ts --outfile dist/wallabag",
     "build:all": "bun build --compile --target=bun-linux-x64 src/main.ts --outfile dist/wallabag-linux-x64 && bun build --compile --target=bun-linux-arm64 src/main.ts --outfile dist/wallabag-linux-arm64 && bun build --compile --target=bun-darwin-x64 src/main.ts --outfile dist/wallabag-darwin-x64 && bun build --compile --target=bun-darwin-arm64 src/main.ts --outfile dist/wallabag-darwin-arm64"
   },
@@ -13,7 +14,8 @@
     "turndown": "^7"
   },
   "devDependencies": {
-    "bun-types": "^1",
-    "@types/turndown": "^5"
+    "@types/turndown": "^5",
+    "bun-types": "1.4.2",
+    "typescript": "^5"
   }
 }
