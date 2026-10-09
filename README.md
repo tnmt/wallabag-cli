@@ -113,6 +113,33 @@ cp .env.example .env  # Edit with your credentials
 bun run src/main.ts entry list
 ```
 
+## Prebuilt binaries
+
+`v*` タグを push すると GitHub Actions が各プラットフォーム向けの単体バイナリをビルドし、Release に添付する。bun や git は不要。
+
+```sh
+# 例: Linux x64
+curl -fsSL -o wallabag https://github.com/tnmt/wallabag-cli/releases/latest/download/wallabag-linux-x64
+chmod +x wallabag
+```
+
+対応: `linux-x64` / `linux-arm64` / `darwin-x64` / `darwin-arm64`。SHA-256 は Release の `checksums.txt` に載っている。
+
+ローカルでのビルド:
+
+```sh
+bun run build       # dist/wallabag
+bun run build:all   # 全プラットフォーム
+```
+
+リリース手順:
+
+```sh
+git tag -a v0.1.0 -m "v0.1.0" && git push origin v0.1.0
+```
+
+`package.json` と `src/main.ts` の `VERSION`、`src/commands/schema.ts` の `version` を揃えてからタグを打つ。
+
 ## License
 
 MIT
