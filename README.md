@@ -115,30 +115,30 @@ bun run src/main.ts entry list
 
 ## Prebuilt binaries
 
-`v*` タグを push すると GitHub Actions が各プラットフォーム向けの単体バイナリをビルドし、Release に添付する。bun や git は不要。
+Pushing a `v*` tag triggers GitHub Actions to build standalone binaries for each platform and attach them to the Release. Neither bun nor git is required.
 
 ```sh
-# 例: Linux x64
+# Example: Linux x64
 curl -fsSL -o wallabag https://github.com/tnmt/wallabag-cli/releases/latest/download/wallabag-linux-x64
 chmod +x wallabag
 ```
 
-対応: `linux-x64` / `linux-arm64` / `darwin-x64` / `darwin-arm64`。SHA-256 は Release の `checksums.txt` に載っている。
+Supported: `linux-x64` / `linux-arm64` / `darwin-x64` / `darwin-arm64`. SHA-256 checksums are listed in `checksums.txt` in the Release.
 
-ローカルでのビルド:
+Local build:
 
 ```sh
 bun run build       # dist/wallabag
-bun run build:all   # 全プラットフォーム
+bun run build:all   # All platforms
 ```
 
-リリース手順:
+Release procedure:
 
 ```sh
 git tag -a v0.1.0 -m "v0.1.0" && git push origin v0.1.0
 ```
 
-`package.json` と `src/main.ts` の `VERSION`、`src/commands/schema.ts` の `version` を揃えてからタグを打つ。
+Make sure the versions in `package.json`, `VERSION` in `src/main.ts`, and `version` in `src/commands/schema.ts` match before tagging.
 
 ## License
 
